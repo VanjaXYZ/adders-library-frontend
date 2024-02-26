@@ -26,7 +26,7 @@ const BookCard = ({
     <div key={id}>
       <Card
         className={cn(
-          "max-w-[380px] h-[220px] bg-gradient-to-t from-red-700 via-rose-500 to-pink-500 flex flex-col justify-between hover:cursor-pointer",
+          "max-w-[380px] h-[220px] bg-gradient-to-r from-emerald-500 to-emerald-900 text-white flex flex-col justify-between hover:cursor-pointer hover:shadow-lg hover:shadow-teal-500",
           className
         )}
         {...props}
@@ -37,7 +37,7 @@ const BookCard = ({
         </CardHeader>
         <CardFooter
           className={cn(
-            "flex justify-center items-center border-t rounded-t-[35%] bg-white font-semibold",
+            "flex justify-center items-center border-t rounded-t-[35%] bg-white text-black font-semibold",
             className
           )}
         >
