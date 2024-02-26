@@ -1,0 +1,5 @@
+# top nav-menu with links & adder logo
+# links -> Library, Buy Next Book - Wishlist
+# side-menu ???
+# login onSubmit animation with animation js-library (gsap, swiper etc.)
+# onDelete animation
