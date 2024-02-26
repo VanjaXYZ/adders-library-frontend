@@ -7,13 +7,9 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import React from "react";
-type BookProps = {
-  title: string;
-  author: string;
-  id: string;
-  description: string;
-};
-type CardProps = React.ComponentProps<typeof Card> & BookProps;
+import { Book } from "../interfaces";
+
+type CardProps = React.ComponentProps<typeof Card> & Book;
 const BookCard = ({
   className,
   title,
@@ -26,7 +22,7 @@ const BookCard = ({
     <div key={id}>
       <Card
         className={cn(
-          "max-w-[380px] h-[220px] bg-gradient-to-r from-emerald-500 to-emerald-900 text-white flex flex-col justify-between hover:cursor-pointer hover:shadow-lg hover:shadow-teal-500",
+          " max-w-[380px] m-auto text-center h-[220px] bg-gradient-to-r from-emerald-500 to-emerald-900 text-white flex flex-col justify-between hover:cursor-pointer hover:shadow-lg hover:shadow-teal-500",
           className
         )}
         {...props}
