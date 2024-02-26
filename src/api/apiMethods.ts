@@ -14,3 +14,17 @@ export const getBooksCollection = async () => {
     console.error(error);
   }
 };
+
+// Create new book
+export const createNewBook = async (book: any) => {
+  try {
+    const response = await axios.post(`${Config.baseURL}/books`, {
+      title: book.title,
+      description: book.description,
+      author: book.author,
+    });
+    if (response.status === 200) return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
