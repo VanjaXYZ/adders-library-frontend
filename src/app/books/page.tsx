@@ -4,7 +4,7 @@ import { Book } from "./interfaces";
 
 const Books = async () => {
   const books = await getBooksCollection();
-  return books.map((book: Book) => (
+  return books?.map((book: Book) => (
     <div className="w-full">
       <BookCard
         title={book.title}
