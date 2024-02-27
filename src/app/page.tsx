@@ -1,5 +1,5 @@
 import { CreateBookModal } from "@/components/layout/CreateBookModal";
-import Books from "./books/page";
+import Books from "./books/Books";
 
 export default function Home() {
   return (
