@@ -18,4 +18,6 @@ const SubmitFormButton = forwardRef((props, ref) => {
   );
 });
 
+SubmitFormButton.displayName = "SubmitFormButton";
+
 export default SubmitFormButton;
