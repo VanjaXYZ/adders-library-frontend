@@ -1,5 +1,8 @@
+"use server";
+
 import axios from "axios";
 import { Config } from "../../Config";
+import { revalidatePath } from "next/cache";
 
 // Get books collection
 export const getBooksCollection = async () => {
@@ -16,15 +19,16 @@ export const getBooksCollection = async () => {
 };
 
 // Create new book
-export const createNewBook = async (book: any) => {
-  try {
-    const response = await axios.post(`${Config.baseURL}/books`, {
-      title: book.title,
-      description: book.description,
-      author: book.author,
-    });
-    if (response.status === 200) return response;
-  } catch (error) {
-    console.error(error);
-  }
+
+export const addBook = async (formData: FormData) => {
+  const bookTitle = formData.get("title");
+  const bookAuthor = formData.get("author");
+  const bookDescription = formData.get("description");
+  const createBook = await axios.post(`${Config.baseURL}/books`, {
+    title: bookTitle,
+    author: bookAuthor,
+    description: bookDescription,
+  });
+  revalidatePath("/");
+  return createBook;
 };
