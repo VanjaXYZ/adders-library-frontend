@@ -8,6 +8,7 @@ import {
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Book } from "../interfaces";
+import DeleteBookButton from "@/components/layout/DeleteBookButton";
 
 type CardProps = React.ComponentProps<typeof Card> & Book;
 const BookCard = ({
@@ -22,12 +23,13 @@ const BookCard = ({
     <div key={id}>
       <Card
         className={cn(
-          " max-w-[380px] m-auto text-center h-[220px] bg-gradient-to-r from-emerald-500 to-emerald-900 text-white flex flex-col justify-between hover:cursor-pointer hover:shadow-lg hover:shadow-teal-500",
+          " max-w-[380px] m-auto text-center h-[220px] bg-gradient-to-r from-emerald-500 to-emerald-900 text-white flex flex-col justify-between hover:shadow-lg hover:shadow-teal-500 relative",
           className
         )}
         {...props}
       >
         <CardHeader>
+          <DeleteBookButton id={id} />
           <CardTitle>{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
         </CardHeader>
