@@ -14,13 +14,13 @@ type CardProps = React.ComponentProps<typeof Card> & Book;
 const BookCard = ({
   className,
   title,
-  id,
+  _id,
   author,
   description,
   ...props
 }: CardProps) => {
   return (
-    <div key={id}>
+    <div key={_id}>
       <Card
         className={cn(
           " max-w-[380px] m-auto text-center h-[220px] bg-gradient-to-r from-emerald-500 to-emerald-900 text-white flex flex-col justify-between hover:shadow-lg hover:shadow-teal-500 relative",
@@ -29,7 +29,7 @@ const BookCard = ({
         {...props}
       >
         <CardHeader>
-          <DeleteBookButton id={id} />
+          <DeleteBookButton id={_id} />
           <CardTitle>{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
         </CardHeader>

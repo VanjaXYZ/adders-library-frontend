@@ -8,7 +8,7 @@ const Books = async () => {
     <div className="w-full" key={book._id}>
       <BookCard
         title={book.title}
-        id={book._id}
+        _id={book._id}
         author={book.author}
         description={book.description}
       />
