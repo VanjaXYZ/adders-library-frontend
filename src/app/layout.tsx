@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import TopNavigationMenu from "@/components/layout/TopNavigationMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({
           inter.className + " bg-gradient-to-r from-slate-900 to-slate-700 "
         }
       >
+        <div className="w-full flex justify-between p-2 px-6 bg-gradient-to-r from-emerald-500 to-emerald-900">
+          <TopNavigationMenu />
+        </div>
         {children}
       </body>
     </html>
