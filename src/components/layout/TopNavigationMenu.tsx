@@ -13,13 +13,17 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import ADDER_LOGO from "@/app/assets/adder-logo.png";
 
 const TopNavigationMenu = () => {
   const pathname = usePathname();
   return (
     <>
-      <div className="italic text-white">LOGO</div>
-      <h3 className="text-white uppercase text-2xl tracking-widest">
+      <div>
+        <Image src={ADDER_LOGO} alt="adder_logo" width={25} height={25} />
+      </div>
+      <h3 className="text-white uppercase text-2xl tracking-widest hidden sm:flex">
         Adder's Library
       </h3>
       <NavigationMenu>
