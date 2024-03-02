@@ -30,8 +30,8 @@ const TopNavigationMenu = () => {
         <NavigationMenuList className={cn("flex gap-10")}>
           <NavigationMenuLink
             className={cn(
-              `hover:text-green-200 text-white ${
-                pathname === "/" ? "text-green-400" : ""
+              `hover:text-white text-black ${
+                pathname === "/" ? "text-white " : ""
               }`
             )}
             href="/"
@@ -40,8 +40,8 @@ const TopNavigationMenu = () => {
           </NavigationMenuLink>
           <NavigationMenuLink
             className={cn(
-              `hover:text-green-200 text-white ${
-                pathname === "/wishlist" ? "text-green-400" : ""
+              `hover:text-white text-black ${
+                pathname === "/wishlist" ? "text-white" : ""
               }`
             )}
             href="/wishlist"
