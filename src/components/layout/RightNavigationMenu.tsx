@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,8 +16,16 @@ import {
 import { CiMenuFries } from "react-icons/ci";
 import ADDER_TITLE from "@/app/assets/title-logo.png";
 import Image from "next/image";
+import {
+  NavigationMenu,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "../ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const RightNavigationMenu = () => {
+  const pathname = usePathname();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -27,13 +36,19 @@ const RightNavigationMenu = () => {
       <SheetContent className="bg-gradient-to-r from-emerald-500 to-emerald-900">
         <SheetHeader>
           <SheetTitle className="flex justify-center">
-            <Image src={ADDER_TITLE} alt="adder_logo" width={155} height={25} />
+            <Image
+              src={ADDER_TITLE}
+              alt="adder_logo"
+              width={250}
+              height={250}
+              priority={true}
+            />
           </SheetTitle>
-          <SheetDescription>
+          {/* <SheetDescription>
             Make changes to your profile here. Click save when you're done.
-          </SheetDescription>
+          </SheetDescription> */}
         </SheetHeader>
-        <div className="grid gap-4 py-4">
+        {/* <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
@@ -53,7 +68,37 @@ const RightNavigationMenu = () => {
               Save changes
             </Button>
           </SheetClose>
-        </SheetFooter>
+        </SheetFooter> */}
+        <div className="w-full">
+          <NavigationMenu className="w-full m-auto mt-10">
+            <NavigationMenuList
+              className={cn(
+                "flex flex-col justify-center items-center w-full m-auto gap-10"
+              )}
+            >
+              <NavigationMenuLink
+                className={cn(
+                  `hover:text-white text-black text-2xl ${
+                    pathname === "/" ? "text-white " : ""
+                  }`
+                )}
+                href="/"
+              >
+                Library
+              </NavigationMenuLink>
+              <NavigationMenuLink
+                className={cn(
+                  `hover:text-white text-black text-2xl ${
+                    pathname === "/wishlist" ? "text-white" : ""
+                  }`
+                )}
+                href="/wishlist"
+              >
+                Wishlist
+              </NavigationMenuLink>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
       </SheetContent>
     </Sheet>
   );
