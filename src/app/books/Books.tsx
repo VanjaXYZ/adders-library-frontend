@@ -1,9 +1,7 @@
-import { getBooksCollection } from "@/api/apiMethods";
 import BookCard from "./components/BookCard";
 import { Book } from "./interfaces";
 
-const Books = async () => {
-  const books = await getBooksCollection();
+const Books = async ({ books }: any) => {
   return books?.map((book: Book) => (
     <div className="w-full" key={book._id}>
       <BookCard
