@@ -17,9 +17,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Config } from "../../../../Config";
-
+import Cookies from "js-cookie";
 const LoginForm = () => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -38,7 +37,7 @@ const LoginForm = () => {
       });
       if (loginUser.status === 201) {
         console.log(loginUser);
-        router.replace("/");
+        Cookies.set("token", loginUser?.data?.access_token);
         toast({
           variant: "success",
           title: "Loggin success!",
