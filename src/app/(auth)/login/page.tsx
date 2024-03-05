@@ -1,17 +1,6 @@
 "use client";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { FormSchema } from "@/app/types";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -21,30 +10,31 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
+import { formSchema } from "@/lib/formSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-const formSchema = z.object({
-  username: z.string().min(2).max(50),
-  password: z.string().min(3),
-});
-
-const Login = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
+const LoginForm = () => {
+  const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
       password: "",
     },
   });
-
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const router = useRouter();
+  const { toast } = useToast();
+  const onLoginUser = async (values: FormSchema) => {
+    console.log("Logging in...");
   };
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(onLoginUser)}
         className="space-y-8 w-full p-2 sm:w-1/2 m-auto my-4"
       >
         <FormField
@@ -77,12 +67,22 @@ const Login = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant={"outline"}>
-          Login
-        </Button>
+        <div className="flex gap-8 flex-col sm:flex-row">
+          <Button type="submit" className="w-full" variant={"outline"}>
+            Login
+          </Button>
+          <Button
+            type="button"
+            onClick={() => router.push("/register")}
+            className="w-full"
+            variant={"outline"}
+          >
+            Sign in
+          </Button>
+        </div>
       </form>
     </Form>
   );
 };
 
-export default Login;
+export default LoginForm;
