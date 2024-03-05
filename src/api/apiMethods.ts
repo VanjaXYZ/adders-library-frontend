@@ -1,8 +1,8 @@
 "use server";
 
 import axios from "axios";
-import { Config } from "../../Config";
 import { revalidatePath } from "next/cache";
+import { Config } from "../../Config";
 
 // Get books collection
 
