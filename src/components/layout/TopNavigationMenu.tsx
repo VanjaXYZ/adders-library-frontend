@@ -17,6 +17,7 @@ import Image from "next/image";
 import ADDER_LOGO from "@/app/assets/adder-logo.png";
 import ADDER_TITLE from "@/app/assets/title-logo.png";
 import RightNavigationMenu from "./RightNavigationMenu";
+import LogoutButton from "./LogoutButton";
 
 const TopNavigationMenu = () => {
   const pathname = usePathname();
@@ -55,6 +56,7 @@ const TopNavigationMenu = () => {
             >
               Wishlist
             </NavigationMenuLink>
+            <LogoutButton />
           </NavigationMenuList>
         </NavigationMenu>
       </div>
