@@ -37,6 +37,7 @@ const LoginForm = () => {
         password: values.password,
       });
       if (loginUser.status === 201) {
+        console.log(loginUser);
         router.replace("/");
         toast({
           variant: "success",
