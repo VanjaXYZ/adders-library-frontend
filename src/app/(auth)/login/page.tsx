@@ -36,12 +36,12 @@ const LoginForm = () => {
         password: values.password,
       });
       if (loginUser.status === 201) {
-        console.log(loginUser);
         Cookies.set("token", loginUser?.data?.access_token);
         toast({
           variant: "success",
           title: "Loggin success!",
         });
+        router.replace("/");
         return loginUser;
       }
     } catch (error: any) {
