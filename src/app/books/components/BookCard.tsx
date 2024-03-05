@@ -31,7 +31,9 @@ const BookCard = ({
         <CardHeader>
           <DeleteBookButton id={_id} />
           <CardTitle>{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
+          <CardDescription className="text-white">
+            {description}
+          </CardDescription>
         </CardHeader>
         <CardFooter
           className={cn(
