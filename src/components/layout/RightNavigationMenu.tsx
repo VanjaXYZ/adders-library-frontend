@@ -23,14 +23,17 @@ import {
 } from "../ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { IconContext } from "react-icons";
 
 const RightNavigationMenu = () => {
   const pathname = usePathname();
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
-          <CiMenuFries />
+        <Button variant="ghost">
+          <IconContext.Provider value={{ color: "black" }}>
+            <CiMenuFries />
+          </IconContext.Provider>
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-gradient-to-r from-emerald-500 to-emerald-900">
