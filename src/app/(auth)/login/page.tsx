@@ -14,9 +14,11 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { formSchema } from "@/lib/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Config } from "../../../../Config";
 
 const LoginForm = () => {
   const form = useForm<FormSchema>({
@@ -29,7 +31,26 @@ const LoginForm = () => {
   const router = useRouter();
   const { toast } = useToast();
   const onLoginUser = async (values: FormSchema) => {
-    console.log("Logging in...");
+    try {
+      const loginUser = await axios.post(`${Config.baseURL}/auth/login`, {
+        username: values.username,
+        password: values.password,
+      });
+      if (loginUser.status === 201) {
+        router.replace("/");
+        toast({
+          variant: "success",
+          title: "Loggin success!",
+        });
+        return loginUser;
+      }
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: error.response.data.error,
+      });
+      console.error(error);
+    }
   };
   return (
     <Form {...form}>
