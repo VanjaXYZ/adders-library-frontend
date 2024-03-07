@@ -82,7 +82,9 @@ const RightNavigationMenu = () => {
               <LogoutButton />
             </div>
           </>
-        ) : null}
+        ) : (
+          <p className="text-center">Please log in.</p>
+        )}
       </SheetContent>
     </Sheet>
   );
