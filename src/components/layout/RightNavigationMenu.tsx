@@ -11,7 +11,6 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { IconContext } from "react-icons";
 import { CiMenuFries } from "react-icons/ci";
 import {
   NavigationMenu,
@@ -28,9 +27,7 @@ const RightNavigationMenu = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost">
-          <IconContext.Provider value={{ color: "black" }}>
-            <CiMenuFries />
-          </IconContext.Provider>
+          <CiMenuFries />
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-gradient-to-r from-emerald-500 to-emerald-900">
