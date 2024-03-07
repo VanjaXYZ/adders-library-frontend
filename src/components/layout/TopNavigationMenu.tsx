@@ -1,26 +1,31 @@
 "use client";
-import React from "react";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
 import ADDER_LOGO from "@/app/assets/adder-logo.png";
 import ADDER_TITLE from "@/app/assets/title-logo.png";
-import RightNavigationMenu from "./RightNavigationMenu";
+import {
+  NavigationMenu,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import Cookies from "js-cookie";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import LogoutButton from "./LogoutButton";
+import RightNavigationMenu from "./RightNavigationMenu";
+import { useEffect, useState } from "react";
 
 const TopNavigationMenu = () => {
   const pathname = usePathname();
+  const [token, setToken] = useState<boolean>(false);
+  // let getToken = Cookies.get("token");
+
+  useEffect(() => {
+    let getToken = Cookies.get("token");
+    if (getToken) {
+      setToken(true);
+    }
+  }, []);
+
   return (
     <>
       <div>
@@ -33,8 +38,8 @@ const TopNavigationMenu = () => {
       <div className="2xl:hidden">
         <RightNavigationMenu />
       </div>
-      <div className="hidden 2xl:flex">
-        <NavigationMenu>
+      {token ? (
+        <NavigationMenu className="hidden 2xl:flex">
           <NavigationMenuList className={cn("flex gap-10")}>
             <NavigationMenuLink
               className={cn(
@@ -59,7 +64,7 @@ const TopNavigationMenu = () => {
             <LogoutButton />
           </NavigationMenuList>
         </NavigationMenu>
-      </div>
+      ) : null}
     </>
   );
 };
