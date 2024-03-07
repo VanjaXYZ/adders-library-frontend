@@ -13,10 +13,7 @@ export function middleware(request: NextRequest) {
   //     return NextResponse.redirect(new URL("/", request.url));
   //   }
   // }
-
-  if (!token && request.nextUrl.pathname !== "/login") {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  console.log(token);
 }
 export const config = {
   matcher: "/((?!api|_next|static|public|favicon.ico).*)",
