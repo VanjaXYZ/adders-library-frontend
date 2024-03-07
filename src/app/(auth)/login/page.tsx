@@ -65,7 +65,7 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel className="text-white">Username</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input placeholder="Min. 4 character(s)" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -81,7 +81,7 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel className="text-white">Password</FormLabel>
               <FormControl>
-                <Input placeholder="password" {...field} />
+                <Input placeholder="Min. 8 character(s)" {...field} />
               </FormControl>
               <FormDescription>This is your password.</FormDescription>
               <FormMessage />
