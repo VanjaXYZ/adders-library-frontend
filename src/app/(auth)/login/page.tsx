@@ -81,7 +81,11 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel className="text-white">Password</FormLabel>
               <FormControl>
-                <Input placeholder="Min. 8 character(s)" {...field} />
+                <Input
+                  placeholder="Min. 8 character(s)"
+                  type="password"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>This is your password.</FormDescription>
               <FormMessage />
