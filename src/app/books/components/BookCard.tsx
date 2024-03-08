@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardDescription,
@@ -6,9 +7,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useRef } from "react";
 import { Book } from "../interfaces";
 import DeleteBookButton from "@/components/layout/DeleteBookButton";
+import { deleteBook } from "@/api/apiMethods";
 
 type CardProps = React.ComponentProps<typeof Card> & Book;
 const BookCard = ({
@@ -19,6 +21,7 @@ const BookCard = ({
   description,
   ...props
 }: CardProps) => {
+  const deleteBookRef = useRef();
   return (
     <div key={_id}>
       <Card
@@ -29,7 +32,10 @@ const BookCard = ({
         {...props}
       >
         <CardHeader>
-          <DeleteBookButton id={_id} />
+          <form action={deleteBook}>
+            <input type="hidden" name="id" value={_id} />{" "}
+            <DeleteBookButton ref={deleteBookRef} />
+          </form>
           <CardTitle>{title}</CardTitle>
           <CardDescription className="text-white">
             {description}

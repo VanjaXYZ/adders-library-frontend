@@ -1,17 +1,21 @@
-import React from "react";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { deleteBook } from "@/api/apiMethods";
+import { forwardRef } from "react";
+import { Button } from "../ui/button";
+import { useFormStatus } from "react-dom";
 
-const DeleteBookButton = ({ id }: { id: string | undefined }) => {
+const DeleteBookButton = forwardRef((props, ref) => {
+  const { pending } = useFormStatus();
   return (
-    <form action={deleteBook}>
-      <input type="hidden" name="id" value={id} />
-      <Button className={cn("bg-transparent absolute top-0 right-0")}>
-        ❌
-      </Button>
-    </form>
+    <Button
+      {...props}
+      className={cn("bg-transparent absolute top-0 right-0")}
+      aria-disabled={pending}
+    >
+      {pending ? "Removing..." : "❌"}
+    </Button>
   );
-};
+});
+
+DeleteBookButton.displayName = "DeleteBookButton";
 
 export default DeleteBookButton;
