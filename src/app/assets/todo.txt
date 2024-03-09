@@ -3,3 +3,5 @@
 # side-menu ???
 # login onSubmit animation with animation js-library (gsap, swiper etc.)
 # onDelete animation
+# login/register redesign - use shadcn TABS component
+# add profile avatar with couple of functions - change profile picture, email etc.
