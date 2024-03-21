@@ -18,6 +18,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Config } from "../../../../Config";
+import { ArrowBigLeftDash } from "lucide-react";
+import Link from "next/link";
 
 const RegisterForm = () => {
   const form = useForm<FormSchema>({
@@ -57,6 +59,14 @@ const RegisterForm = () => {
         onSubmit={form.handleSubmit(onRegisterUser)}
         className="space-y-8 w-full p-2 sm:w-1/2 m-auto my-4"
       >
+        <Link href={"/login"}>
+          {" "}
+          <ArrowBigLeftDash
+            color="white"
+            size={34}
+            className="cursor-pointer"
+          />
+        </Link>
         <FormField
           control={form.control}
           name="username"
