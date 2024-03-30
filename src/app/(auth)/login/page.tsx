@@ -102,7 +102,7 @@ const LoginForm = () => {
             className="w-full"
             variant={"outline"}
           >
-            Sign in
+            Sign up
           </Button>
         </div>
       </form>
