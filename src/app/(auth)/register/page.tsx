@@ -99,7 +99,7 @@ const RegisterForm = () => {
         />
         <div className="flex gap-8 flex-col sm:flex-row">
           <Button type="submit" className="w-full" variant={"outline"}>
-            Sign in
+            Sign up
           </Button>
         </div>
       </form>
